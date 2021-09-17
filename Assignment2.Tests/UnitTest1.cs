@@ -15,7 +15,7 @@ namespace Assignment2.Tests
             Class1.Main(new string[0]);
 
             var output = writer.GetStringBuilder().ToString().Trim();
-            Assert.Equal("Hallo World",output);
+            Assert.Equal("Hallo World!",output);
         }
     }
 }
