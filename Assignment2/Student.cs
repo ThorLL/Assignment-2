@@ -24,13 +24,7 @@ namespace Assignment2
                     }
                 }else
                 {
-                    if (EndDate != GraduationDate)
-                    {
-                        _status = StudentStatus.Dropout;
-                    }else
-                    {
-                        _status = StudentStatus.Graduated;
-                    }
+                    _status = EndDate != GraduationDate ? StudentStatus.Dropout : StudentStatus.Graduated;
                 }
                 return _status;
             }
@@ -55,8 +49,5 @@ namespace Assignment2
         }
     }
 
-    public enum StudentStatus
-    {
-        New,Active,Dropout,Graduated
-    }
+    
 }

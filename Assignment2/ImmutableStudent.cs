@@ -12,25 +12,14 @@ namespace Assignment2
         public DateTime GraduationDate { get; init;}
         public StudentStatus Status {
             get
-            {if (EndDate > DateTime.Now)
+            {
+                if (EndDate <= DateTime.Now)
+                    return EndDate != GraduationDate ? StudentStatus.Dropout : StudentStatus.Graduated;
+                if (StartDate < DateTime.Now && DateTime.Now < StartDate.AddYears(1))
                 {
-                    if (StartDate < DateTime.Now && DateTime.Now < StartDate.AddYears(1))
-                    {
-                        return StudentStatus.New;
-                    }else
-                    {
-                        return StudentStatus.Active;
-                    }
-                }else
-                {
-                    if (EndDate != GraduationDate)
-                    {
-                        return StudentStatus.Dropout;
-                    }else
-                    {
-                        return StudentStatus.Graduated;
-                    }
+                    return StudentStatus.New;
                 }
+                return StudentStatus.Active;
             } 
             init{}
             }
