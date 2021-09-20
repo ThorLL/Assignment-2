@@ -8,27 +8,18 @@ namespace Assignment2
         private string GivenName { get; }
         private string SurName { get; }
 
-        private StudentStatus _status;
-        public StudentStatus Status
-        {
+        public StudentStatus Status {
             get
             {
-                if (EndDate > DateTime.Now)
+                if (EndDate <= DateTime.Now)
+                    return EndDate != GraduationDate ? StudentStatus.Dropout : StudentStatus.Graduated;
+                if (StartDate < DateTime.Now && DateTime.Now < StartDate.AddYears(1))
                 {
-                    if (StartDate < DateTime.Now && DateTime.Now < StartDate.AddYears(1))
-                    {
-                        _status = StudentStatus.New;
-                    }else
-                    {
-                        _status = StudentStatus.Active;
-                    }
-                }else
-                {
-                    _status = EndDate != GraduationDate ? StudentStatus.Dropout : StudentStatus.Graduated;
+                    return StudentStatus.New;
                 }
-                return _status;
-            }
-            set => _status = value;            
+                return StudentStatus.Active;
+            } 
+            init{}
         }
 
         public DateTime StartDate { get; set; }
