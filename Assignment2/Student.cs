@@ -8,7 +8,7 @@ namespace Assignment2
         private string GivenName { get; }
         private string SurName { get; }
 
-        private StudentStatus _Status;
+        private StudentStatus _status;
         public StudentStatus Status
         {
             get
@@ -17,38 +17,35 @@ namespace Assignment2
                 {
                     if (StartDate < DateTime.Now && DateTime.Now < StartDate.AddYears(1))
                     {
-                        _Status = StudentStatus.New;
+                        _status = StudentStatus.New;
                     }else
                     {
-                        _Status = StudentStatus.Active;
+                        _status = StudentStatus.Active;
                     }
                 }else
                 {
                     if (EndDate != GraduationDate)
                     {
-                        _Status = StudentStatus.Dropout;
-                    }else if (EndDate == GraduationDate)
+                        _status = StudentStatus.Dropout;
+                    }else
                     {
-                        _Status = StudentStatus.Graduated;
+                        _status = StudentStatus.Graduated;
                     }
                 }
-                return _Status;
+                return _status;
             }
-            set
-            {
-                _Status = value;
-            }
+            set => _status = value;            
         }
 
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime GraduationDate { get; set; }
 
-        public Student(int Id, string GivenName, string SurName)
+        public Student(int id, string givenName, string surName)
         {
-            this.Id = Id;
-            this.GivenName = GivenName;
-            this.SurName = SurName;
+            Id = id;
+            GivenName = givenName;
+            SurName = surName;
             StartDate = DateTime.Now;
         }
 

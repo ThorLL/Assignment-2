@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Assignment2.Tests
 {
-    public class UnitTest1
+    public class StudentTest
     {
         [Fact]
         public void Get_Status_New_Student_Today()
